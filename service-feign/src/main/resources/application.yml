@@ -1,0 +1,13 @@
+﻿spring:
+  application:
+    name: service-feign #spring.application.name,这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name
+server:
+  port: 8765
+eureka:
+  client:
+    service-url:
+      #在配置文件中注明自己的服务注册中心的地址
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true #Feign是自带断路器的，在低版本的Spring Cloud中，它没有默认打开。需要在配置文件中配置打开它

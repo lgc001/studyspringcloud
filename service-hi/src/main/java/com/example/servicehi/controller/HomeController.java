@@ -14,7 +14,7 @@ public class HomeController {
 
     @RequestMapping("/hi")
     public String hi(@RequestParam String name) {
-        return "hi "+name+",i am from port:" +port;
+        return "hi "+name+",i am service-hi from port:" +port;
     }
 
     @RequestMapping("/index")

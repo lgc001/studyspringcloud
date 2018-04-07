@@ -1,10 +1,10 @@
-server:
+ï»¿server:
   port: 8761
 eureka:
   instance:
     hostname: localhost
   client:
-    register-with-eureka: false #ÔÚÄ¬ÈÏÇé¿öÏÂerureka serverÒ²ÊÇÒ»¸öeureka client ,±ØĞëÒªÖ¸¶¨ÊÇÒ»¸ö server£¬Í¨¹ıeureka.client.registerWithEureka£ºfalseºÍfetchRegistry£ºfalseÀ´±íÃ÷×Ô¼ºÊÇÒ»¸öeureka server.
+    register-with-eureka: false #åœ¨é»˜è®¤æƒ…å†µä¸‹erureka serverä¹Ÿæ˜¯ä¸€ä¸ªeureka client ,å¿…é¡»è¦æŒ‡å®šæ˜¯ä¸€ä¸ª serverï¼Œé€šè¿‡eureka.client.registerWithEurekaï¼šfalseå’ŒfetchRegistryï¼šfalseæ¥è¡¨æ˜è‡ªå·±æ˜¯ä¸€ä¸ªeureka server.
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
