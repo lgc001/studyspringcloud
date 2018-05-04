@@ -1,4 +1,4 @@
-package com.example.servicefeign.Service;
+package com.example.servicefeign.remote;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;

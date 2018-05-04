@@ -1,6 +1,6 @@
 package com.example.servicefeign.Service.impl;
 
-import com.example.servicefeign.Service.SchedualServiceRibbon;
+import com.example.servicefeign.remote.SchedualServiceRibbon;
 import com.example.servicefeign.Service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

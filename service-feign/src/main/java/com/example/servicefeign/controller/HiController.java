@@ -1,7 +1,7 @@
 package com.example.servicefeign.controller;
 
-import com.example.servicefeign.Service.SchedualServiceHi;
-import com.example.servicefeign.Service.SchedualServiceRibbon;
+import com.example.servicefeign.remote.SchedualServiceHi;
+import com.example.servicefeign.remote.SchedualServiceRibbon;
 import com.example.servicefeign.Service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
