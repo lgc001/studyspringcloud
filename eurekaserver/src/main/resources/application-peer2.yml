@@ -1,0 +1,13 @@
+﻿server:
+  port: 7002
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    #在搭建 Eureka Server 双节点或集群的时候，要把eureka.client.register-with-eureka和eureka.client.fetch-registry均改为true（默认）。否则会出现实例列表为空，且 peer2 不在 available-replicas 而在 unavailable-replicas 的情况（这时其实只是启动了两个单点实例）
+    service-url:
+      #每台注册中心分别又指向其它两个节点即可。
+      defaultZone: http://peer3:7003/eureka/,http://peer1:7001/eureka/ #http://10.105.25.35:7003/eureka/,http://10.105.25.35:7001/eureka/
+  server:
+    #关闭自我保护机制
+    #enable-self-preservation: false

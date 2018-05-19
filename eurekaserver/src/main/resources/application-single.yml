@@ -1,0 +1,16 @@
+﻿server:
+  port: 8761
+eureka:
+  instance:
+    hostname: localhost
+    #不使用主机名来定义注册中心的地址
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    register-with-eureka: false #默认为 true。在默认情况下erureka server也是一个eureka client ,必须要指定是一个 server，通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
+    fetch-registry: false #默认为 true。是否检索服务。该应用为服务注册中心，职责为注册和发现服务，无需检索服务，设置为 false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    #关闭自我保护机制
+    enable-self-preservation: false

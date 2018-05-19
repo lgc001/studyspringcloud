@@ -7,7 +7,7 @@ eureka:
   client:
     service-url:
       #在配置文件中注明自己的服务注册中心的地址,多个时可以逗号分隔http://master:7998/eureka/,http://backup:7999/eureka/
-      defaultZone: http://localhost:8761/eureka/ #为了减少和均匀EurekaServer压力和访问便利，我们对于每个微服务的不同实例，配置Eureka集群都要写的顺序不一样，和自己网段一样的写的靠前
+      defaultZone: http://127.0.0.1:8761/eureka/ #为了减少和均匀EurekaServer压力和访问便利，我们对于每个微服务的不同实例，配置Eureka集群都要写的顺序不一样，和自己网段一样的写的靠前
   instance:
     instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
     prefer-ip-address: true
