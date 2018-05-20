@@ -1,0 +1,18 @@
+﻿server:
+  port: 8762
+eureka:
+  instance:
+    #以ip方式配置
+    ip-address: 192.168.20.183
+    prefer-ip-address: true
+    #表示eureka client发送心跳给server端的频率。默认为30
+    lease-renewal-interval-in-seconds: 5
+    #表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance。默认为90秒
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      #每台注册中心分别又指向其它两个节点即可。
+      defaultZone: http://192.168.20.184:8763/eureka/,http://192.168.20.98:8761/eureka/
+  #server:
+    #是否使用自我保护机制，默认为true
+    #enable-self-preservation: false
