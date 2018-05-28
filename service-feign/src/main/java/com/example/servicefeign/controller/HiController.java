@@ -1,6 +1,7 @@
 package com.example.servicefeign.controller;
 
-import com.example.servicefeign.remote.SchedualServiceHi;
+import com.example.servicefeign.dto.ResponseDto;
+import com.example.servicefeign.remote.ServiceHiClient;
 import com.example.servicefeign.remote.SchedualServiceRibbon;
 import com.example.servicefeign.Service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.Map;
 public class HiController {
 
     @Autowired
-    SchedualServiceHi schedualServiceHi;
+    ServiceHiClient serviceHiClient;
 
     @Autowired
     SchedualServiceRibbon schedualServiceRibbon;
@@ -25,7 +26,7 @@ public class HiController {
 
     @RequestMapping(value = "/hi",method = RequestMethod.GET)
     public String sayHi(@RequestParam String name){
-        return schedualServiceHi.sayHiFromClientOne(name);
+        return serviceHiClient.sayHiFromClientOne(name);
     }
 
     @RequestMapping(value = "/ribbonhi",method = RequestMethod.GET)
@@ -43,9 +44,24 @@ public class HiController {
         return schedualServiceRibbon.sayIndexFromClientOne(map);
     }
 
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public String test()
+    @RequestMapping(value = "/ribbonIndex",method = RequestMethod.GET)
+    public String ribbonIndex()
     {
         return testService.getRibbonIndex();
+    }
+
+    @RequestMapping("/test")
+    public ResponseDto test() {
+        return serviceHiClient.test("user");
+    }
+
+    @RequestMapping("/test-exception")
+    public ResponseDto testException() {
+        return serviceHiClient.testException("user");
+    }
+
+    @RequestMapping("/test-exception1")
+    public ResponseDto testException1() {
+        return serviceHiClient.testException1("user");
     }
 }
