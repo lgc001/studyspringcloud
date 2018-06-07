@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
  * zuul不仅只是路由，并且还能过滤，做一些安全验证
  */
 @Component
-public class MyFilter extends ZuulFilter {
+public class GatewayZuulFilter extends ZuulFilter {
 
-    private static Logger log = LoggerFactory.getLogger(MyFilter.class);
+    private static Logger log = LoggerFactory.getLogger(GatewayZuulFilter.class);
 
     /**
      * filterType：返回一个字符串代表过滤器的类型，在zuul中定义了四种不同生命周期的过滤器类型，具体如下：
@@ -30,7 +30,7 @@ public class MyFilter extends ZuulFilter {
     }
 
     /**
-     * filterOrder：过滤的顺序
+     * filterOrder：过滤器顺序，类似@Filter中的order。多个过滤器同时存在时根据这个order来决定先后顺序，越小优先级越高
      * @return
      */
     @Override
@@ -40,6 +40,7 @@ public class MyFilter extends ZuulFilter {
 
     /**
      * shouldFilter：这里可以写逻辑判断，是否要过滤，本文true,永远过滤。
+     * 只有true时才会执行run()里的代码，在生产环境一般是要根据函数条件来判断的。
      * @return
      */
     @Override
@@ -58,14 +59,14 @@ public class MyFilter extends ZuulFilter {
         log.info(String.format("%s >>> %s", request.getMethod(), request.getRequestURL().toString()));
         Object accessToken = request.getParameter("token");
         if(accessToken == null) {
-            log.warn("token is empty");
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(401);
-            try {
-                ctx.getResponse().getWriter().write("token is empty");
-            }catch (Exception e){}
-
-            return null;
+//            log.warn("token is empty");
+//            ctx.setSendZuulResponse(false);
+//            ctx.setResponseStatusCode(401);
+//            try {
+//                ctx.getResponse().getWriter().write("token is empty");
+//            }catch (Exception e){}
+//
+//            return null;
         }
         log.info("ok");
         return null;

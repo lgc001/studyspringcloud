@@ -16,3 +16,7 @@ zuul:
     api-b: #以/api-b/开头的请求都转发给service-feign服务
       path: /api-b/**
       serviceId: service-feign
+    shangpin: #访问/sp/** 直接重定向到http://www.shangpin.com/**
+          path: /women/a/**
+          url: http://www.shangpin.com/women/
+  ignored-services: '*' #// 忽略所有请求，只设置路由的可通过
