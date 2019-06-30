@@ -13,7 +13,7 @@ spring:
           #如果Git仓库为公开仓库，可以不填写用户名和密码，如果是私有仓库需要填写，本例子是公开仓库
           password:  #访问git仓库的用户名
           username:  #访问git仓库的用户密码
-        lable: master #配置仓库的分支
+      lable: master #配置仓库的分支
 
 server:
   port: 8888

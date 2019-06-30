@@ -19,8 +19,8 @@ eureka:
       #在配置文件中注明自己的服务注册中心的地址
       defaultZone: http://127.0.0.1:8761/eureka/
   instance:
-    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
     prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 feign:
   hystrix:
     enabled: true #Feign是自带断路器的，在低版本的Spring Cloud中，它没有默认打开。需要在配置文件中配置打开它

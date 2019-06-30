@@ -1,18 +1,9 @@
-﻿spring:
+spring:
   application:
-    name: service-hi #spring.application.name,这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name
-  #链路追踪
-  sleuth:
-    web:
-      client:
-        enabled: true #开启sleuth功能
-    sampler:
-      probability: 1.0 # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1，即10%概率收集链路数据
-  zipkin:
-    base-url: http://localhost:9411/ # 指定了 Zipkin 服务器的地址
-
+    name: config-client #配置中心的配置文件名必须为(如果取dev版本，名字是约定的)config-client-dev.yml
 server:
-  port: 8762
+  port: 8881
+
 eureka:
   client:
     service-url:
@@ -34,3 +25,4 @@ hystrix:
 ribbon:
   ReadTimeout: 5000
   ConnectTimeout: 5000
+

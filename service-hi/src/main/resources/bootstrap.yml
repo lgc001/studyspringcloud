@@ -1,0 +1,11 @@
+spring:
+#  application:
+#    name: service-hi
+  #配置中心client
+  cloud:
+    config:
+      label: master #指明远程仓库的分支
+      profile: dev #开发环境配置文件
+      uri: http://localhost:8888/ #指明配置服务中心的网址
+
+foo: dddd
