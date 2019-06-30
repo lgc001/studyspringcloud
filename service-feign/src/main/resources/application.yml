@@ -1,6 +1,16 @@
 ﻿spring:
   application:
     name: service-feign #spring.application.name,这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name
+  #链路追踪
+  sleuth:
+    web:
+      client:
+        enabled: true #开启sleuth功能
+    sampler:
+      probability: 1.0 # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1，即10%概率收集链路数据
+  zipkin:
+    base-url: http://localhost:9411/ # 指定了 Zipkin 服务器的地址
+
 server:
   port: 8765
 eureka:
@@ -9,8 +19,8 @@ eureka:
       #在配置文件中注明自己的服务注册中心的地址
       defaultZone: http://127.0.0.1:8761/eureka/
   instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.name}:${server.port}
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 feign:
   hystrix:
     enabled: true #Feign是自带断路器的，在低版本的Spring Cloud中，它没有默认打开。需要在配置文件中配置打开它
