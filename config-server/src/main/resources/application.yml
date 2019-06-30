@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: config-server
+  #配置中心servr
+  #远程仓库https://github.com/forezp/SpringcloudConfig/ 中有个文件config-client-dev.properties文件中有一个属性：
+  #foo = foo version 21
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/forezp/SpringcloudConfig/ #配置git仓库地址
+          searchPaths: respo   #配置仓库路径
+          #如果Git仓库为公开仓库，可以不填写用户名和密码，如果是私有仓库需要填写，本例子是公开仓库
+          password:  #访问git仓库的用户名
+          username:  #访问git仓库的用户密码
+        lable: master #配置仓库的分支
+
+server:
+  port: 8888
